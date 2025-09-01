@@ -10,12 +10,13 @@ from locators import *
 
 
 class TestTheConstructorSection:
-    def test_buns_section(self, driver, my_fixture):
-        WebDriverWait(my_fixture, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, button_sauces))).click() # дождаться видимости кнопки "Соусы" и нажать на неё
+    def test_buns_section(self, my_fixture):
+        WebDriverWait(my_fixture, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, button_sauces))) # дождаться видимости кнопки "Соусы" и нажать на неё
         buns = my_fixture.find_element(By.XPATH, button_buns_class).get_attribute('class') # получить атрибут class (неактивен)
         my_fixture.find_element(By.XPATH, button_buns).click()
         buns_active = my_fixture.find_element(By.XPATH, button_buns_class).get_attribute('class') # получить атрибут class (активен)
-        assert buns != buns_active
+        assert 'tab_tab_type_current__2BEPc' not in buns
+        assert 'tab_tab_type_current__2BEPc' in buns_active
         
 
     def test_sauces_section(self, driver, my_fixture):
@@ -23,7 +24,8 @@ class TestTheConstructorSection:
         sauces = my_fixture.find_element(By.XPATH, button_sauces_class).get_attribute('class') # получить атрибут class (неактивен)
         my_fixture.find_element(By.XPATH, button_sauces).click()
         sauces_active = my_fixture.find_element(By.XPATH, button_sauces_class).get_attribute('class') # получить атрибут class (активен)
-        assert sauces != sauces_active
+        assert 'tab_tab_type_current__2BEPc' not in sauces
+        assert 'tab_tab_type_current__2BEPc' in sauces_active
         
 
 
@@ -32,7 +34,8 @@ class TestTheConstructorSection:
         fillings = my_fixture.find_element(By.XPATH, button_fillings_class).get_attribute('class') # получить атрибут class (неактивен)
         my_fixture.find_element(By.XPATH, button_fillings).click()
         fillings_active = my_fixture.find_element(By.XPATH, button_fillings_class).get_attribute('class') # получить атрибут class (активен)
-        assert fillings != fillings_active
+        assert 'tab_tab_type_current__2BEPc' not in fillings
+        assert 'tab_tab_type_current__2BEPc' in fillings_active
         
         
         
